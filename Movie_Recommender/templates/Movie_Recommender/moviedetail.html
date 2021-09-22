@@ -1,0 +1,21 @@
+{% extends "Movie_Recommender/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="row">
+		<h2>Movie Detail</h2>
+		<div class="card" style="width: 9rem;">
+					<img src="{{ movie.movie_logo.url}}" class="card-img-top">
+					<div class="card-body">
+						<h6 class="card-title">{{movie.title}}</h6>
+						<p class="card-text text-secondary">{{movie.genres}}</p>
+					</div>
+		</div>
+		<form method="post" action="" role="form">
+			{% csrf_token %}
+			<div class="input-group">
+				{{ form.rating|as_crispy_field }}
+			</div>
+			<button type="submit" class="btn btn-outline-dark">Rate</button>
+		</form>
+	</div>
+{% endblock content %}
